@@ -46,7 +46,7 @@ function Singup() {
                     // onClick={()=>toggleOTP()}
                     onClick={handleSignup}
                 >
-                    Sign in
+                    Sign up
                 </button>
                 <p className="signup-link">
                     Already have an account?
