@@ -11,6 +11,8 @@ const getReport = async (req, res) => {
     await axios.get(`https://api.open-elevation.com/api/v1/lookup?locations=${city.latitude},${city.longitude}`).then((response)=>{
       const elevation_data = response.data.results[0]
       data={...data, ...elevation_data}
+    }).catch((err)=>{
+      console.log(err.response.data)
     })
     await axios.post(`http://127.0.0.1:5000/predict`,data).then((response)=>{
       data={...data,"probability":response.data['prediction']}
@@ -18,6 +20,7 @@ const getReport = async (req, res) => {
       console.log(err)
     });
   }
+  console.log(data)
   res.send(data)
 }
 
