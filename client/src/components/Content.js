@@ -12,7 +12,7 @@ function Content() {
         wind_speed,
         humidity,
         precipitation,
-        coordinates, setStatistics } = useStatistics()
+        latitude,longitude, setStatistics } = useStatistics()
     const { probability, setProbability } = useProbability()
     const [precautions, setPrecautions] = useState([])
     const [ color, setColor ] = useState("")
@@ -20,7 +20,9 @@ function Content() {
 
     const handleGetreport = async () => {
         await axios.post(`${BASE_URL_BACKEND}home/get_report`, { city: input }).then((response) => {
+            console.log(response.data)
             setStatistics(response.data)
+            setProbability(response.data.probability)
         }).catch(err => {
             setToast({ message: err.data, type: false })
         })
@@ -110,8 +112,8 @@ function Content() {
                                             {precipitation && `${precipitation} %`}
                                         </div>
                                         <div className="col box-prop">
-                                            Co-Ordinates<hr /> Latitude : {coordinates.latitude}<br></br>
-                                            Longitude : {coordinates.longitude}
+                                            Co-Ordinates<hr /> Latitude : {latitude}<br></br>
+                                            Longitude : {longitude}
                                         </div>
                                     </div>
                                 </div>

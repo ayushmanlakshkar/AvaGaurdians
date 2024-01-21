@@ -15,11 +15,12 @@ export const useStatistics = create((set) => ({
 
     setStatistics: (statistic) => set({
         temperature: statistic.temperature,
-        wind_direction: statistic.wind_direction,
+        wind_direction: statistic.wind_dir,
         wind_speed: statistic.wind_speed,
         humidity: statistic.humidity,
-        precipitation: statistic.precipitation,
-        coordinates: statistic.coordinates
+        precipitation: statistic.precip,
+        latitude: statistic.latitude,
+        longitude: statistic.longitude
     })
 }))
 
