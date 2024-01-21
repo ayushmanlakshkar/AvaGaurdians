@@ -27,9 +27,8 @@ def predict():
         # Make a prediction using the pre-trained model
         prediction = model.predict(features)[0]
         print(prediction)
-        response = json.dumps({'prediction': prediction})
-        print(type(response))
-        return jsonify(response)
+        response = json.dumps({'prediction': str(prediction)})
+        return jsonify(json.loads(response))
     
     except Exception as e:
         return jsonify({'error': str(e)})

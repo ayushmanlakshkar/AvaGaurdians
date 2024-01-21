@@ -13,7 +13,7 @@ def train_model():
 
     # Extract features (X) and target variable (y) from the dataset
     X = Av_df[['elevation', 'temperature', 'wind_speed', 'humidity']]
-    y = Av_df['danger_level'].div(5).mul(100).astype(int)
+    y = Av_df['danger_level']
 
     # Split the dataset into training and testing sets
     train_x, _, train_y, _ = train_test_split(X, y, test_size=0.1)

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { BASE_URL_BACKEND } from '../service/Api';
 import { useUser,usePage } from '../store';
-import { useStatistics,useAuthentication } from '../store'
+import { useStatistics,useAuthentication,useProbability } from '../store'
 import { useToast } from '../store'
 import axios from 'axios'
 
@@ -11,6 +11,7 @@ function Navbar() {
 const {page,changePage} = usePage();
 const { setStatistics }= useStatistics()
 const{toggleAuthentication} = useAuthentication()
+const {setProbability} = useProbability()
 const {setToast}=useToast()
 
 const toggleNavbar = () => {
@@ -25,6 +26,8 @@ const handleLocation = async () => {
           console.log(`Latitude: ${latitude}, Longitude: ${longitude}`);
           await axios.post(`${BASE_URL_BACKEND}home/get_report`, {latitude,longitude}).then((response) => {
             setStatistics(response.data)
+            setProbability(response.data.probability)
+
         }).catch(err => {
             setToast({message:err.message,type:false})
         })

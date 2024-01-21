@@ -23,6 +23,8 @@ function Content() {
             console.log(response.data)
             setStatistics(response.data)
             setProbability(response.data.probability)
+            setInput("")
+            setCities([])
         }).catch(err => {
             setToast({ message: err.data, type: false })
         })
@@ -48,9 +50,13 @@ function Content() {
         } else if (probability >= 30) {
             setPrecautions(["Choose routes that minimize exposure to potential avalanche-prone areas, sticking to safer, well-traveled paths.", "Steer clear of cornices, as these overhanging snow formations can pose a risk, even in areas with a generally low avalanche hazard.", "If possible, travel with companions. Group travel enhances safety through mutual assistance and shared decision-making."])
             setColor("yellow-panel")
-        } else {
+        } else if(probability>0){
             setColor("green-panel")
             setPrecautions(["There is very less chances of Avalanche stay safe tho :)"])
+        }else{
+            setColor("")
+            setPrecautions([])
+
         }
     }, [probability])
 
