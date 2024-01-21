@@ -1,7 +1,7 @@
 import {create} from 'zustand';
 
 export const useProbability = create((set) => ({
-    probability: 9,
+    probability: "",
     setProbability: (chance) => set({ probability: chance })
 }))
 
