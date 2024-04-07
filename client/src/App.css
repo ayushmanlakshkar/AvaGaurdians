@@ -341,11 +341,11 @@ li {
   border: 1px solid black;
 }
 
-img {
+/* img {
   width:90px;
   z-index: 1;
   filter: drop-shadow(0 0 1rem rgb(255, 255, 255));
-}
+} */
 
 #product {
   display:flex;
